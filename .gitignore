@@ -1,13 +1,33 @@
+# keep the repo to the submission itself: the PDF, the two programs, the README
+
+# LaTeX sources and build files
+*.tex
+*.log
+*.aux
+*.out
+
+# figures and screenshots used to build the PDF
+*.png
+*.jpg
+
+# intermediate and superseded PDFs
+Premnath_StacksQueues_InClassWork.pdf
+Q1_stacks_answers.pdf
+Q2_logic_answers.pdf
+q2_circuit_ref.pdf
+q2_kmap.pdf
+q2_nand_ref.pdf
+
+# working copies of the sources, published here as q1.cpp and q2.cpp
+expression_eval.cpp
+expression_eval_short.cpp
+logic_stack.cpp
+
 # compiled binaries
 expression_eval
 expression_eval_short
 logic_stack
 q1
 q2
-
-# LaTeX build leftovers
-*.log
-*.aux
-*.out
 _out.txt
 _q2out.txt
