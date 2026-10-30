@@ -14,8 +14,16 @@ class ValueStack
 public:
     bool empty() { return t == -1; }
     bool full() { return t == MAX - 1; }
-    void push(int x) { if (!full()) a[++t] = x; }
-    int pop() { return a[t--]; }
+    void push(int x)
+    {
+        if (full()) { cout << "push: overflow" << endl; return; }
+        a[++t] = x;
+    }
+    int pop()
+    {
+        if (empty()) { cout << "pop: underflow" << endl; return 0; }
+        return a[t--];
+    }
 };
 
 class OpStack
@@ -26,8 +34,16 @@ public:
     bool empty() { return t == -1; }
     bool full() { return t == MAX - 1; }
     char top() { return a[t]; }
-    void push(char c) { if (!full()) a[++t] = c; }
-    char pop() { return a[t--]; }
+    void push(char c)
+    {
+        if (full()) { cout << "push: overflow" << endl; return; }
+        a[++t] = c;
+    }
+    char pop()
+    {
+        if (empty()) { cout << "pop: underflow" << endl; return 0; }
+        return a[t--];
+    }
 };
 
 bool isNumber(string s)

@@ -15,8 +15,16 @@ class ValueStack
 public:
     bool empty() { return t == -1; }
     bool full() { return t == MAX - 1; }
-    void push(int x) { if (!full()) a[++t] = x; }
-    int pop() { return a[t--]; }
+    void push(int x)
+    {
+        if (full()) { cout << "push: overflow" << endl; return; }
+        a[++t] = x;
+    }
+    int pop()
+    {
+        if (empty()) { cout << "pop: underflow" << endl; return 0; }
+        return a[t--];
+    }
 };
 
 class OpStack
@@ -27,8 +35,16 @@ public:
     bool empty() { return t == -1; }
     bool full() { return t == MAX - 1; }
     char top() { return a[t]; }
-    void push(char c) { if (!full()) a[++t] = c; }
-    char pop() { return a[t--]; }
+    void push(char c)
+    {
+        if (full()) { cout << "push: overflow" << endl; return; }
+        a[++t] = c;
+    }
+    char pop()
+    {
+        if (empty()) { cout << "pop: underflow" << endl; return 0; }
+        return a[t--];
+    }
 };
 
 bool isVariable(string s)
@@ -47,7 +63,7 @@ int valueOf(string s, int A, int B, int C, int D)
     return v;
 }
 
-int prec(char c)
+int precedence(char c)
 {
     if (c == '&') return 2;
     return 1;
@@ -75,7 +91,7 @@ int evaluate(vector<string> tok, int A, int B, int C, int D)
         else
         {
             char c = tok[i][0];
-            while (!ops.empty() && prec(ops.top()) >= prec(c))
+            while (!ops.empty() && precedence(ops.top()) >= precedence(c))
             {
                 char o = ops.pop();
                 int b = vals.pop();
