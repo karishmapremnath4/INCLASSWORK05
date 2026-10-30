@@ -1,0 +1,13 @@
+# compiled binaries
+expression_eval
+expression_eval_short
+logic_stack
+q1
+q2
+
+# LaTeX build leftovers
+*.log
+*.aux
+*.out
+_out.txt
+_q2out.txt
